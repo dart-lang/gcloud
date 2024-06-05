@@ -143,8 +143,8 @@ class Query<T extends Model> {
   final _relationMapping = const <String, ds.FilterRelation>{
     '<': ds.FilterRelation.LessThan,
     '<=': ds.FilterRelation.LessThanOrEqual,
-    '>': ds.FilterRelation.GreatherThan,
-    '>=': ds.FilterRelation.GreatherThanOrEqual,
+    '>': ds.FilterRelation.GreaterThan,
+    '>=': ds.FilterRelation.GreaterThanOrEqual,
     '=': ds.FilterRelation.Equal,
   };
 
@@ -211,7 +211,7 @@ class Query<T extends Model> {
   void order(String orderString) {
     // TODO: validate [orderString] (e.g. is name valid)
     if (orderString.startsWith('-')) {
-      _orders.add(ds.Order(ds.OrderDirection.Decending,
+      _orders.add(ds.Order(ds.OrderDirection.Descending,
           _convertToDatastoreName(orderString.substring(1))));
     } else {
       _orders.add(ds.Order(
@@ -425,7 +425,7 @@ Future _commitHelper(DatastoreDB db,
 
     for (var model in inserts) {
       // If parent was not explicitly set, we assume this model will map to
-      // it's own entity group.
+      // its own entity group.
       model.parentKey ??= db.defaultPartition.emptyKey;
       if (model.id == null) {
         autoIdModelInserts.add(model);

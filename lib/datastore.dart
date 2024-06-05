@@ -54,14 +54,14 @@ class DatastoreError implements Exception {
   final String message;
 
   DatastoreError([String? message])
-      : message = message ?? 'DatastoreError: An unknown error occured';
+      : message = message ?? 'DatastoreError: An unknown error occurred';
 
   @override
   String toString() => message;
 }
 
 class UnknownDatastoreError extends DatastoreError {
-  UnknownDatastoreError(error) : super('An unknown error occured ($error).');
+  UnknownDatastoreError(error) : super('An unknown error occurred ($error).');
 }
 
 class TransactionAbortedError extends DatastoreError {
@@ -123,7 +123,7 @@ class Entity {
 /// A key can uniquely identify a datastore `Entity`s. It consists of a
 /// partition and path. The path consists of one or more `KeyElement`s.
 ///
-/// A key may be incomplete. This is usesful when inserting `Entity`s which IDs
+/// A key may be incomplete. This is useful when inserting `Entity`s which IDs
 /// should be automatically allocated.
 ///
 /// Example of a fully populated [Key]:
@@ -252,9 +252,9 @@ class FilterRelation {
   // ignore: constant_identifier_names
   static const FilterRelation LessThanOrEqual = FilterRelation._('<=');
   // ignore: constant_identifier_names
-  static const FilterRelation GreatherThan = FilterRelation._('>');
+  static const FilterRelation GreaterThan = FilterRelation._('>');
   // ignore: constant_identifier_names
-  static const FilterRelation GreatherThanOrEqual = FilterRelation._('>=');
+  static const FilterRelation GreaterThanOrEqual = FilterRelation._('>=');
   // ignore: constant_identifier_names
   static const FilterRelation Equal = FilterRelation._('==');
 
@@ -289,7 +289,7 @@ class OrderDirection {
   // ignore: constant_identifier_names
   static const OrderDirection Ascending = OrderDirection._('Ascending');
   // ignore: constant_identifier_names
-  static const OrderDirection Decending = OrderDirection._('Decending');
+  static const OrderDirection Descending = OrderDirection._('Descending');
 
   final String name;
 
@@ -386,7 +386,7 @@ abstract class Datastore {
   ///
   /// The [project] is the name of the Google Cloud project.
   ///
-  /// Returs an object providing access to Datastore. The passed-in [client]
+  /// Returns an object providing access to Datastore. The passed-in [client]
   /// will not be closed automatically. The caller is responsible for closing
   /// it.
   factory Datastore(http.Client client, String project) {
