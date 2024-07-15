@@ -441,7 +441,7 @@ void runTests(Datastore datastore, String? namespace) {
         });
       });
 
-      // This should not work with [unamedEntities20], but is working!
+      // This should not work with [unnamedEntities20], but is working!
       // FIXME TODO FIXME : look into this.
       test('delete_transactional', () {
         return insert([], unnamedEntities99, transactional: false).then((keys) {
@@ -780,7 +780,7 @@ void runTests(Datastore datastore, String? namespace) {
       assert(indexedEntity.length == 1);
 
       var filters = [
-        Filter(FilterRelation.GreatherThan, queryKey, queryLowerBound),
+        Filter(FilterRelation.GreaterThan, queryKey, queryLowerBound),
         Filter(FilterRelation.LessThan, queryKey, queryUpperbound),
       ];
       var listFilters = [
@@ -795,7 +795,7 @@ void runTests(Datastore datastore, String? namespace) {
         Filter(FilterRelation.Equal, testUnindexedProperty, queryIndexValue)
       ];
 
-      var orders = [Order(OrderDirection.Decending, queryKey)];
+      var orders = [Order(OrderDirection.Descending, queryKey)];
 
       test('query', () async {
         await insert(stringNamedEntities, <Entity>[]);
